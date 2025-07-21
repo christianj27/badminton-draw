@@ -1,42 +1,123 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  /* A subtle gradient background */
+  background: linear-gradient(135deg, #f0f2f5 0%, #e0e6ed 100%);
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;    /* Center vertically */
+  min-height: 100vh;      /* Take full viewport height */
+  color: #333;
+  padding: 0 10px;
+}
+
+.App {
+  background-color: #ffffff;
+  max-width: 500px; /* Slightly reduced width for better focus */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
   text-align: center;
+  transition: all 0.3s ease-in-out; /* Smooth transitions for hover effects etc. */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1 {
+  color: #4a90e2; /* A pleasant blue for the title */
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-group {
+  margin-bottom: 25px; /* Increased margin for spacing */
+  text-align: left;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #555;
+  font-size: 1.05em;
 }
 
-.card {
-  padding: 2em;
+.form-group select {
+  width: 100%;
+  padding: 12px 15px; /* Increased padding */
+  border: 1px solid #c9d6df; /* Softer border color */
+  border-radius: 8px; /* More rounded corners */
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: #f7f9fc; /* Light background for inputs */
+  appearance: none; /* Remove default select arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%20197.6c-4.4%204.4-10.9%207-17.5%207H22.9c-6.6%200-13.1-2.6-17.5-7-9.4-9.4-9.4-24.6%200-33.9L130.4%205.4c9.4-9.4%2024.6-9.4%2033.9%200l114.7%20158.3c9.4%209.3%209.4%2024.5.1%2033.9z%22/%3E%3C/svg%3E'); /* Custom arrow */
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  color: #303030;
 }
 
-.read-the-docs {
-  color: #888;
+.form-group select:focus {
+  outline: none;
+  border-color: #4a90e2; /* Highlight on focus */
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+button {
+  background-color: #4a90e2; /* Primary blue button */
+  color: white;
+  padding: 14px 25px; /* Larger padding */
+  border: none;
+  border-radius: 8px; /* More rounded */
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 10px rgba(74, 144, 226, 0.25); /* Button shadow */
+}
+
+button:hover:not(:disabled) {
+  background-color: #357ABD; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.result {
+  margin-top: 35px; /* Increased margin */
+  padding: 20px;
+  background-color: #e9f7ef; /* Light green background */
+  border: 1px solid #c8e6d8;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 128, 0, 0.08); /* Greenish shadow */
+}
+
+.result h2 {
+  color: #28a745; /* Green for success */
+  margin: 0;
+  font-size: 2em; /* Larger number */
+  font-weight: 700;
+}
+
+.message {
+  margin-top: 25px;
+  padding: 12px;
+  background-color: #fff3cd; /* Light yellow for warnings */
+  border: 1px solid #ffeeba;
+  color: #856404; /* Dark yellow text */
+  border-radius: 8px;
+  font-size: 0.95em;
+  font-weight: 500;
 }
