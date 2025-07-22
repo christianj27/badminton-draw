@@ -1,13 +1,20 @@
 {
   "compilerOptions": {
+    // Essential for serverless functions on Vercel with ESM:
+    "module": "ESNext",          // Emits JS with ES import/export syntax
+    "moduleResolution": "NodeNext", // Modern Node.js module resolution
+    "target": "ES2022",          // Target modern Node.js environment
+    "esModuleInterop": true,     // Important for compatibility with CommonJS imports
+    "isolatedModules": true,     // Good practice for serverless functions
+
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    "target": "ES2023",
+    // "target": "ES2023",
     "lib": ["ES2023"],
-    "module": "ESNext",
+    // "module": "ESNext",
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    // "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
@@ -21,5 +28,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "api"]
 }
