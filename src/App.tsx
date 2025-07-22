@@ -12,7 +12,6 @@ interface Team {
 // Wrap your App component with the provider
 function AppWithRecaptcha() {
   const recaptchaKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || '';
-  console.log('reCAPTCHA Site Key loaded:', recaptchaKey);
   
   if (!recaptchaKey) {
     console.error("reCAPTCHA site key is not set. Please add VITE_RECAPTCHA_SITE_KEY to your .env file.");
