@@ -41,7 +41,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       body: `secret=${secretKey}&response=${token}`,
     });
 
-    const data: RecaptchaVerificationResponse = await googleResponse.json();
+    const data = (await googleResponse.json()) as RecaptchaVerificationResponse;
 
     // Optional: Add more stringent checks (e.g., expected action, minimum score)
     // if (data.action !== 'generate_number') { /* ... */ }
