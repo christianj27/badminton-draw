@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     // Essential for serverless functions on Vercel with ESM:
-    "module": "ESNext",          // Emits JS with ES import/export syntax
+    "module": "NodeNext",          // Emits JS with ES import/export syntax
     "moduleResolution": "NodeNext", // Modern Node.js module resolution
     "target": "ES2022",          // Target modern Node.js environment
     "esModuleInterop": true,     // Important for compatibility with CommonJS imports
