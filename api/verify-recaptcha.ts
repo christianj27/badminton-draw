@@ -16,7 +16,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const { token } = req.body;
-
+  console.log('Serverless function received request token: !', token);
+  console.log('Secret Key:', process.env.RECAPTCHA_SECRET_KEY ? 'Set' : 'NOT SET'); // Log for debugging
   if (!token) {
     return res.status(400).json({ error: 'Missing reCAPTCHA token.' });
   }
