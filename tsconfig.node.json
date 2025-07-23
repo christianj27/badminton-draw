@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "ESNext",          // CRITICAL: Ensure this is set to an ESM type
+    "module": "NodeNext",          // CRITICAL: Ensure this is set to an ESM type
     "moduleResolution": "NodeNext", // CRITICAL: This is crucial for Node ESM
     "target": "ES2022",          // Good modern target for Vercel's Node runtime
     "esModuleInterop": true,     // Essential for mixed imports
