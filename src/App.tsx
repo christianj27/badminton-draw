@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { supabase } from './supabaseClient';
 import './App.css';
-import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+// import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 interface Team {
   id: string;
@@ -9,21 +9,21 @@ interface Team {
   name: string;
 }
 
-// Wrap your App component with the provider
-function AppWithRecaptcha() {
-  const recaptchaKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || '';
+// // Wrap your App component with the provider
+// function AppWithRecaptcha() {
+//   const recaptchaKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || '';
   
-  if (!recaptchaKey) {
-    console.error("reCAPTCHA site key is not set. Please add VITE_RECAPTCHA_SITE_KEY to your .env file.");
-    return <div className="App"><h1>Error: reCAPTCHA not configured.</h1></div>;
-  }
+//   if (!recaptchaKey) {
+//     console.error("reCAPTCHA site key is not set. Please add VITE_RECAPTCHA_SITE_KEY to your .env file.");
+//     return <div className="App"><h1>Error: reCAPTCHA not configured.</h1></div>;
+//   }
 
-  return (
-    <GoogleReCaptchaProvider reCaptchaKey={recaptchaKey} useRecaptchaNet={false}>
-      <App />
-    </GoogleReCaptchaProvider>
-  );
-}
+//   return (
+//     <GoogleReCaptchaProvider reCaptchaKey={recaptchaKey} useRecaptchaNet={false}>
+//       <App />
+//     </GoogleReCaptchaProvider>
+//   );
+// }
 
 function App() {
   const [selectedGender, setSelectedGender] = useState<'Ganda Putra' | 'Ganda Putri' | 'Fun Match' | ''>('');
@@ -36,7 +36,7 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Hook to execute reCAPTCHA
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  // const { executeRecaptcha } = useGoogleReCaptcha();
 
   const findTeamsWithoutGeneratedNumbers = useCallback(async () => {
     setIsLoading(true);
@@ -103,60 +103,60 @@ function App() {
     setMessage('');
   };
 
-  const handleGenerateClick = async () => {
-    if (!selectedTeam) {
-      setMessage('Please select a team.');
-      return;
-    }
+  // const handleGenerateClick = async () => {
+  //   if (!selectedTeam) {
+  //     setMessage('Please select a team.');
+  //     return;
+  //   }
 
-    if (!executeRecaptcha) {
-      setMessage('reCAPTCHA not loaded yet. Please try again in a moment.');
-      return;
-    }
+  //   if (!executeRecaptcha) {
+  //     setMessage('reCAPTCHA not loaded yet. Please try again in a moment.');
+  //     return;
+  //   }
 
-    setIsLoading(true);
-    setMessage('Verifying CAPTCHA...');
+  //   setIsLoading(true);
+  //   setMessage('Verifying CAPTCHA...');
 
-    try {
-      // 1. Execute reCAPTCHA on the client-side to get a token
-      const token = await executeRecaptcha('generate_number'); // 'generate_number' is your action name
+  //   try {
+  //     // 1. Execute reCAPTCHA on the client-side to get a token
+  //     const token = await executeRecaptcha('generate_number'); // 'generate_number' is your action name
 
-      if (!token) {
-        setMessage('reCAPTCHA verification failed. No token received.');
-        setIsLoading(false);
-        return;
-      }
+  //     if (!token) {
+  //       setMessage('reCAPTCHA verification failed. No token received.');
+  //       setIsLoading(false);
+  //       return;
+  //     }
 
-      // 2. Send the token to your Vercel Serverless Function for server-side verification
-      const verificationApiUrl = '/api/verify-recaptcha'; // This path maps to your Vercel Serverless Function
-      const apiResponse = await fetch(verificationApiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token }),
-      });
+  //     // 2. Send the token to your Vercel Serverless Function for server-side verification
+  //     const verificationApiUrl = '/api/verify-recaptcha'; // This path maps to your Vercel Serverless Function
+  //     const apiResponse = await fetch(verificationApiUrl, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ token }),
+  //     });
 
-      const verificationResponse = await apiResponse.json();
+  //     const verificationResponse = await apiResponse.json();
 
-      if (!verificationResponse.success || verificationResponse.score < 0.5) { // Adjust score as needed (0.0 to 1.0)
-        setMessage(`reCAPTCHA verification failed. Score: ${verificationResponse.score}. You might be a bot!`);
-        console.error('reCAPTCHA verification failed:', verificationResponse);
-        setIsLoading(false);
-        return;
-      }
+  //     if (!verificationResponse.success || verificationResponse.score < 0.5) { // Adjust score as needed (0.0 to 1.0)
+  //       setMessage(`reCAPTCHA verification failed. Score: ${verificationResponse.score}. You might be a bot!`);
+  //       console.error('reCAPTCHA verification failed:', verificationResponse);
+  //       setIsLoading(false);
+  //       return;
+  //     }
 
-      // 3. If reCAPTCHA verification passes, proceed with your application logic
-      setMessage('reCAPTCHA verified. Generating number...');
-      await generateAndSaveRandomNumber();
+  //     // 3. If reCAPTCHA verification passes, proceed with your application logic
+  //     setMessage('reCAPTCHA verified. Generating number...');
+  //     await generateAndSaveRandomNumber();
 
-    } catch (error: any) {
-      console.error('reCAPTCHA execution or API call error:', error);
-      setMessage(`Error during verification: ${error.message || 'Unknown error'}`);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  //   } catch (error: any) {
+  //     console.error('reCAPTCHA execution or API call error:', error);
+  //     setMessage(`Error during verification: ${error.message || 'Unknown error'}`);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   const generateAndSaveRandomNumber = async () => {
     if (!selectedTeam) {
@@ -283,4 +283,4 @@ function App() {
   );
 }
 
-export default AppWithRecaptcha;
+export default App;
