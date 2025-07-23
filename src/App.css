@@ -122,6 +122,6 @@ button:disabled {
   font-weight: 500;
 }
 
-/* .grecaptcha-badge {
+.grecaptcha-badge {
   visibility: hidden;
-} */
+}

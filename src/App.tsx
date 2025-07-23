@@ -268,7 +268,7 @@ function App() {
         </select>
       </div>
 
-      <button onClick={handleGenerateClick} disabled={!selectedTeam || isLoading || buttonDisabled}>
+      <button onClick={generateAndSaveRandomNumber} disabled={!selectedTeam || isLoading || buttonDisabled}>
         {isLoading ? 'Mendapatkan...' : 'Dapatkan Nomor Drawing'}
       </button>
 
